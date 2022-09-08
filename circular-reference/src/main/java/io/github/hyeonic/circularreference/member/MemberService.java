@@ -1,8 +1,6 @@
 package io.github.hyeonic.circularreference.member;
 
-import io.github.hyeonic.circularreference.category.Category;
-import io.github.hyeonic.circularreference.category.CategoryService;
-import io.github.hyeonic.circularreference.subscription.SubscriptionService;
+import io.github.hyeonic.circularreference.event.MemberSaveAfterEvent;
 import java.util.NoSuchElementException;
 import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
@@ -12,23 +10,17 @@ public class MemberService {
 
     private static final String MY_SCHEDULE = "내 일정";
 
-    private final CategoryService categoryService;
-    private final SubscriptionService subscriptionService;
     private final MemberRepository memberRepository;
 
-    public MemberService(final CategoryService categoryService, final SubscriptionService subscriptionService,
-                         final MemberRepository memberRepository) {
-        this.categoryService = categoryService;
-        this.subscriptionService = subscriptionService;
+    public MemberService(final MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
 
     @Transactional
-    public Member save(final String email, final String displayName) {
+    public Member save(final String email, final String displayName, MemberSaveAfterEvent memberSaveAfterEvent) {
         Member newMember = memberRepository.save(new Member(email, displayName));
 
-        Category newCategory = categoryService.save(newMember.getId(), MY_SCHEDULE);
-        subscriptionService.save(newMember.getId(), newCategory.getId());
+        memberSaveAfterEvent.process(MY_SCHEDULE, newMember);
 
         return newMember;
     }
