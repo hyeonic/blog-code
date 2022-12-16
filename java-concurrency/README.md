@@ -165,3 +165,10 @@ class AtomicCounterTest {
 ```
 
 ![img.png](images/2.png)
+
+## References.
+
+[자바에서 동시성 문제를 해결하는 3가지 키워드](https://devwithpug.github.io/java/java-thread-safe/) <br>
+[[Java] Java의 동시성 이슈](https://steady-coding.tistory.com/554)<br>
+[[Java] atomic과 CAS 알고리즘](https://steady-coding.tistory.com/568)<br>
+[[Java] Multi Thread환경에서 동시성 제어를 하는 방법](https://deveric.tistory.com/104)<br>
