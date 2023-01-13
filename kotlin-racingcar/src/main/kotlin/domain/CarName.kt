@@ -1,7 +1,7 @@
 package domain
 
 class CarName(
-    val value: String
+    val value: String,
 ) {
 
     init {
