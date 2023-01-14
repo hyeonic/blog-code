@@ -1,4 +1,4 @@
-import domain.Count
+import domain.*
 import java.util.*
 
 fun main(args: Array<String>) {
@@ -8,8 +8,31 @@ fun main(args: Array<String>) {
     val input = scanner.nextLine()
     val carNames = input.split(",")
 
+    val cars = Cars(carNames, RandomMovable())
+
     println("시도할 회수는 몇회인가요?")
     val count = Count(scanner.nextLine())
 
-    println("차 이름: $carNames \n시도 횟수: ${count.value}")
+    println("\n실행 결과")
+    while (!count.isZero()) {
+        cars.moveAll()
+        printCar(cars)
+        count.next()
+    }
+
+    val winners = cars.extractWinner()
+        .map(Car::carName)
+        .map(CarName::value)
+        .joinToString(", ")
+    println("${winners}가 최종 우승했습니다.")
+}
+
+private fun printCar(cars: Cars) {
+    for (car in cars.value) {
+        val carName = car.carName
+        val position = "-".repeat(car.position)
+        println("${carName.value}: ${position}")
+    }
+
+    println()
 }
