@@ -25,7 +25,7 @@ class Count(
         }
     }
 
-    fun isZero(): Boolean = value == 0
+    fun isZero() = value == 0
 
     fun next() = value--
 }

@@ -5,8 +5,9 @@ class Cars(
     private val movable: Movable
 ) {
 
-    val value: List<Car> = value.map(::CarName)
-        .map(::Car)
+    val value: List<Car> = value.toCar()
+
+    private fun List<String>.toCar() = map(::CarName).map(::Car)
 
     init {
         validateDuplicatedCarName()
@@ -29,8 +30,7 @@ class Cars(
     }
 
     fun extractWinner(): List<Car> {
-        val maxCar = value.maxBy(Car::position)
-        val maxCarPosition = maxCar.position
+        val maxCarPosition = value.maxOf(Car::position)
 
         return value.filter { maxCarPosition == it.position }
     }
