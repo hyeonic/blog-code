@@ -10,7 +10,7 @@ import javax.persistence.Id
 @Entity
 class Member(
     name: String
-): BaseEntity() {
+) : BaseEntity() {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,4 +20,8 @@ class Member(
     @Column
     var name: String = name
         protected set
+
+    override fun toString(): String {
+        return "Member(id=$id, name=$name, createdDate=$createdDate, lastModifiedDate=$lastModifiedDate, createdBy='$createdBy', lastModifiedBy='$lastModifiedBy')"
+    }
 }

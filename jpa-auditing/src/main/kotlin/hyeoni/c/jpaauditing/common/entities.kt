@@ -16,12 +16,12 @@ class BaseEntity {
 
     @CreatedDate
     @Column(nullable = false, updatable = false)
-    var createdDate: LocalDateTime = LocalDateTime.now()
+    var createdDate: LocalDateTime = LocalDateTime.MIN
         protected set
 
     @LastModifiedDate
     @Column(nullable = false)
-    var lastModifiedDate: LocalDateTime = LocalDateTime.now()
+    var lastModifiedDate: LocalDateTime = LocalDateTime.MIN
         protected set
 
     @CreatedBy
@@ -35,6 +35,6 @@ class BaseEntity {
         protected set
 
     companion object {
-        const val DEFAULT_MEMBER_NAME = "default member"
+        const val DEFAULT_MEMBER_NAME = "default"
     }
 }
