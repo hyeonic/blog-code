@@ -7,9 +7,8 @@ class NameService(
     private val repository: NameRepository
 ) {
 
-    fun getById(id: Long): Result<String> {
-        return runCatching {
-            repository.findById(id)
-        }
+    fun getById(id: Long): String {
+        return runCatching { repository.findById(id) }
+            .getOrThrow()
     }
 }
