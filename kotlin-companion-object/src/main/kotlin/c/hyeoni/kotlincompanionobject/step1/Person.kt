@@ -1,7 +1,7 @@
-package c.hyeoni.kotlincompanionobject
+package c.hyeoni.kotlincompanionobject.step1
 
 class Person private constructor(
-    val name: String
+    val name: String = DEFAULT_NAME
 ) {
 
     companion object Constant {
