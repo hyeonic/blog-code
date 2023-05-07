@@ -1,0 +1,12 @@
+version: "3.9"
+services:
+  db:
+    image: mongo:latest
+    container_name: boiler-plate
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: hyeoni.c
+      MONGO_INITDB_ROOT_PASSWORD: hyeoni.c
+      MONGO_INITDB_DATABASE: boiler-plate
+    ports:
+      - "27017:27017"
