@@ -233,71 +233,182 @@ data class PassBook(
 
 ```java
 public final class PassBook {
-   private final long accountNumber;
-   private final int balance;
+    private final long accountNumber;
+    private final int balance;
 
-   public final long getAccountNumber() {
-      return this.accountNumber;
-   }
+    public final long getAccountNumber() {
+        return this.accountNumber;
+    }
 
-   public final int getBalance() {
-      return this.balance;
-   }
+    public final int getBalance() {
+        return this.balance;
+    }
 
-   public PassBook(long accountNumber, int balance) {
-      this.accountNumber = accountNumber;
-      this.balance = balance;
-   }
+    public PassBook(long accountNumber, int balance) {
+        this.accountNumber = accountNumber;
+        this.balance = balance;
+    }
 
-   public final long component1() {
-      return this.accountNumber;
-   }
+    public final long component1() {
+        return this.accountNumber;
+    }
 
-   public final int component2() {
-      return this.balance;
-   }
+    public final int component2() {
+        return this.balance;
+    }
 
-   @NotNull
-   public final PassBook copy(long accountNumber, int balance) {
-      return new PassBook(accountNumber, balance);
-   }
+    @NotNull
+    public final PassBook copy(long accountNumber, int balance) {
+        return new PassBook(accountNumber, balance);
+    }
 
-   public static PassBook copy$default(PassBook var0, long var1, int var3, int var4, Object var5) {
-      if ((var4 & 1) != 0) {
-         var1 = var0.accountNumber;
-      }
+    public static PassBook copy$default(PassBook var0, long var1, int var3, int var4, Object var5) {
+        if ((var4 & 1) != 0) {
+            var1 = var0.accountNumber;
+        }
 
-      if ((var4 & 2) != 0) {
-         var3 = var0.balance;
-      }
+        if ((var4 & 2) != 0) {
+            var3 = var0.balance;
+        }
 
-      return var0.copy(var1, var3);
-   }
+        return var0.copy(var1, var3);
+    }
 
-   @NotNull
-   public String toString() {
-      return "PassBook(accountNumber=" + this.accountNumber + ", balance=" + this.balance + ")";
-   }
+    @NotNull
+    public String toString() {
+        return "PassBook(accountNumber=" + this.accountNumber + ", balance=" + this.balance + ")";
+    }
 
-   public int hashCode() {
-      return Long.hashCode(this.accountNumber) * 31 + Integer.hashCode(this.balance);
-   }
+    public int hashCode() {
+        return Long.hashCode(this.accountNumber) * 31 + Integer.hashCode(this.balance);
+    }
 
-   public boolean equals(@Nullable Object var1) {
-      if (this != var1) {
-         if (var1 instanceof PassBook) {
-            PassBook var2 = (PassBook)var1;
-            if (this.accountNumber == var2.accountNumber && this.balance == var2.balance) {
-               return true;
+    public boolean equals(@Nullable Object var1) {
+        if (this != var1) {
+            if (var1 instanceof PassBook) {
+                PassBook var2 = (PassBook) var1;
+                if (this.accountNumber == var2.accountNumber && this.balance == var2.balance) {
+                    return true;
+                }
             }
-         }
 
-         return false;
-      } else {
-         return true;
-      }
-   }
+            return false;
+        } else {
+            return true;
+        }
+    }
 }
 ```
 
 `val`를 활용하게 되면 불변 객체로 사용할 수도 있다. data class 덕분에 반복적으로 작성하던 부가적인 코드를 줄일 수 있게 되었다.
+
+## enum 클래스
+
+`enum class`는 특정한 상수에 이름을 붙여서 사용할 수 있다. 또한 동일한 타입의 프로퍼티와 함수를 가진 상수들을 정의하여 사용할 수 있다.
+
+```kotlin
+enum class Status(val value: String) {
+
+    START("start"),
+    END("end");
+}
+```
+
+enum 클래스는 위와 같이 동일한 타입을 가진 인스턴스를 모아둘 수 있다. 각각의 인스턴스는 모두 같은 타입이기 때문에 같은 프로퍼티와 함수를 가진다.
+만약 각각의 인스턴스가 다를 프로퍼티와 함수를 가지도록 하려면 어떻게 해야 할까?
+
+## sealed 클래스
+
+이때 사용할 수 있는 것이 바로 `sealed class`이다.
+
+```kotlin
+sealed class Result
+
+data class Success<T>(val value: T) : Result()
+data class Failure(val throwable: Throwable) : Result()
+```
+
+`Success`, `Failure` 모두 `Result`의 하위 타입이지만 서로 다른 프로퍼티를 가질 수 있다.
+
+## 패턴 매칭
+
+패턴 매칭은 값, 조건, 타입 등의 패턴에 따라 매칭되는 동작을 수행하도록 한다.
+
+```kotlin
+fun getGrade(score: Int): String {
+    return when (score) {
+        in 90..100 -> "A"
+        in 80..89 -> "B"
+        in 70..79 -> "C"
+        in 60..69 -> "D"
+        else -> "F"
+    }
+}
+```
+
+위 함수는 점수를 받아 성적으로 변환하기 위한 기능을 가지고 있다. score에 따라 범위에 대한 패턴매칭을 통해 적합한 값을 반환한다. 다만 Int라는 타입이
+가지는 값을 모두 커버할 수 없기 때문에 이외에 값이 들어올 때 `else`를 활용해야 한다.
+
+```kotlin
+fun getOrThrow(result: Result): Any? {
+    return when (result) {
+        is Success<*> -> result.value
+        is Failure -> result.throwable
+    }
+}
+```
+
+`sealed class`의 경우 타입을 무조건 제한할 수 있다. 그렇기 때문에 추가적인 `else` 없이 패턴 매칭을 활용할 수 있다.
+
+## 객체 분해
+
+코틀린은 객체 분해가 가능하다. 객체 분해는 객체를 구성하는 프로퍼티를 분해하여 변수에 바로 할당하는 것을 말한다.
+
+```kotlin
+public data class Pair<out A, out B>(
+    public val first: A,
+    public val second: B
+) : Serializable {
+
+    /**
+     * Returns string representation of the [Pair] including its [first] and [second] values.
+     */
+    public override fun toString(): String = "($first, $second)"
+}
+```
+
+위 `Pair`는 아래와 같이 `객체 분해`가 가능하다.
+
+```kotlin
+val (key, value) = Pair("key", "value")
+```
+
+아래와 같이도 가능하다.
+
+```kotlin
+val numbers = mapOf(
+    1 to "1",
+    2 to "2",
+    3 to "3"
+)
+
+for ((key, value) in numbers) {
+    println("key: $key, value: $value")
+}
+```
+
+만약 value가 아닌 key만 필요하다고 가정한다. (특정 프로퍼티만 필요하다고 가정한다.)
+
+```kotlin
+val (key, _) = Pair("key", "value")
+```
+
+`_`를 활용하면 된다.
+
+## 컬렉션
+
+함수형 프로그래밍에서는 보통 `불변` 자료구조를 사용한다. `불변`은 객체가 가진 상태의 변화를 방지하기 때문에 `부수효과`를 막을 수 있다.
+코틀린에서는 `불변`과 `가변` 자료구조를 모두 제공하고 있다.
+
+ * `불변 컬렉션`: `List`, `Set`, `Map` 등
+ * `가변 컬렉션`: `MutableList`, `MutableSet`, `MutableMap` 등

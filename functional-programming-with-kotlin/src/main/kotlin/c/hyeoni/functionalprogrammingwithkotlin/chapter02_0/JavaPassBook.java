@@ -1,4 +1,4 @@
-package c.hyeoni.functionalprogrammingwithkotlin.chapter02;
+package c.hyeoni.functionalprogrammingwithkotlin.chapter02_0;
 
 public class JavaPassBook {
 
