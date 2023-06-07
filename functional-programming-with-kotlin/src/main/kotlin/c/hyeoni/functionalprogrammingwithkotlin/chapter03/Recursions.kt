@@ -16,7 +16,13 @@ fun main() {
 //    val result = maximum(numbers)
 //    println(result)
 
-    val result = reverse("abcd")
+//    val result = reverse("abcd")
+//    println(result)
+
+//    val result = toBinary(8)
+//    println(result)
+
+    val result = replicate(3, 5)
     println(result)
 }
 
@@ -67,5 +73,19 @@ fun reverse(str: String): String {
     return when {
         str.isEmpty() -> ""
         else -> reverse(str.tail()) + str.head()
+    }
+}
+
+fun toBinary(n: Int): String {
+    return when {
+        n < 2 -> "1" // 2로 나눌 수 없는 경우 1
+        else -> toBinary(n / 2) + (n % 2) // (n / 2)로 n을 줄여간다.
+    }
+}
+
+fun replicate(n: Int, element: Int): List<Int> {
+    return when (n) {
+        0 -> listOf()
+        else -> replicate(n - 1, element) + listOf(element)
     }
 }

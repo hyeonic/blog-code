@@ -85,7 +85,57 @@ fun maximum(numbers: List<Int>): Int {
 
 ### 재귀로 reverse() 함수 구현하기
 
+```kotlin
+fun String.head(): Char = this.first()
 
+fun String.tail(): String = this.drop(1)
+
+fun reverse(str: String): String {
+    return when {
+        str.isEmpty() -> ""
+        else -> reverse(str.tail()) + str.head()
+    }
+}
+```
+
+### 재귀로 toBinary() 함수 구현하기
+
+```kotlin
+fun toBinary(n: Int): String {
+    return when {
+        n < 2 -> "1" // 2로 나눌 수 없는 경우 1
+        else -> toBinary(n / 2) + (n % 2) // (n / 2)로 n을 줄여간다.
+    }
+}
+```
+
+### 재귀로 replicate() 함수 구현하기
+
+```kotlin
+fun replicate(n: Int, element: Int): List<Int> {
+    return when (n) {
+        0 -> listOf()
+        else -> replicate(n - 1, element) + listOf(element)
+    }
+}
+```
+
+`Collection`의 `+` 연산자 활용
+
+```kotlin
+public operator fun <T> Collection<T>.plus(elements: Iterable<T>): List<T> {
+    if (elements is Collection) {
+        val result = ArrayList<T>(this.size + elements.size)
+        result.addAll(this)
+        result.addAll(elements)
+        return result
+    } else {
+        val result = ArrayList<T>(this)
+        result.addAll(elements)
+        return result
+    }
+}
+```
 
 ## References.
 
