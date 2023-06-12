@@ -1,11 +1,9 @@
 package c.hyeoni.tobyspringbootwithkotlin
 
-import org.springframework.boot.autoconfigure.SpringBootApplication
-import org.springframework.boot.runApplication
+import c.hyeoni.tobyspringbootwithkotlin.section03.OneServletWebServer
 
-@SpringBootApplication
 class TobySpringBootWithKotlinApplication
 
 fun main(args: Array<String>) {
-    runApplication<TobySpringBootWithKotlinApplication>(*args)
+    OneServletWebServer.start()
 }
