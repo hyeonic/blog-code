@@ -1,4 +1,4 @@
-package c.hyeoni.tobyspringbootwithkotlin.section07
+package c.hyeoni.tobyspringbootwithkotlin.section06
 
 fun interface HelloService {
 

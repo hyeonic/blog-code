@@ -1,4 +1,4 @@
-package c.hyeoni.tobyspringbootwithkotlin.section07config
+package c.hyeoni.tobyspringbootwithkotlin.section06config
 
 import org.springframework.boot.context.annotation.ImportCandidates
 import org.springframework.context.annotation.DeferredImportSelector

@@ -1,4 +1,4 @@
-package c.hyeoni.tobyspringbootwithkotlin.section07
+package c.hyeoni.tobyspringbootwithkotlin.section06
 
 import org.springframework.context.annotation.Primary
 import org.springframework.stereotype.Service

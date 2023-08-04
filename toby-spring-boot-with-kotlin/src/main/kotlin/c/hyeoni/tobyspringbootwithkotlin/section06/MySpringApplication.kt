@@ -1,4 +1,4 @@
-package c.hyeoni.tobyspringbootwithkotlin.section07
+package c.hyeoni.tobyspringbootwithkotlin.section06
 
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext
