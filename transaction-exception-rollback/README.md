@@ -232,6 +232,23 @@ public abstract class AbstractPlatformTransactionManager implements PlatformTran
 
 `ExampleRepository.throwException()`을 호출하면 비즈니스 로직 중 발생한 예외를 감지하고 롤백 마킹을 진행한다. 이제 해당 메서드를 호출한 호출부의 로직을 따라가본다.
 
+```kotlin
+@Service
+class ExampleService(
+    private val exampleRepository: ExampleRepository
+) {
+    // ...
+    @Transactional(readOnly = true)
+    fun exceptionCatchReturnNull() {
+        runCatching { exampleRepository.throwException() }
+            .onSuccess { println("success") }
+            .onFailure { println("failure") }
+            .getOrNull()
+    }
+    // ...
+}
+```
+
 `ExampleService.exceptionCatchReturnNull()`도 `ExampleRepository.throwException()`과 동일하게 `@Transactional` 애노테이션이 존재하므로 프록시 객체를 통해 비즈니스 메서드를 수행한다.
 
 ```java
