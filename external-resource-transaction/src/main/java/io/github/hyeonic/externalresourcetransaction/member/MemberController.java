@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class MemberController {
 
-    private final MemberService memberService;
+    private final MemberRegister memberRegister;
 
     @PostMapping
     public ResponseEntity<MemberResponse> register(@RequestBody MemberRegisterRequest request) {
-        Member savedMember = memberService.register(request.getCode());
+        Member savedMember = memberRegister.register(request.getCode());
         MemberResponse response = new MemberResponse(savedMember);
         return ResponseEntity.ok(response);
     }
