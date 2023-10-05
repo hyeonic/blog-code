@@ -1,6 +1,5 @@
-package c.hyeoni.tobyspringbootwithkotlin.section07config
+package c.hyeoni.tobyspringbootwithkotlin.section08config
 
-import c.hyeoni.tobyspringbootwithkotlin.section08config.ConditionalMyOnClass
 import org.springframework.context.annotation.Condition
 import org.springframework.context.annotation.ConditionContext
 import org.springframework.core.type.AnnotatedTypeMetadata

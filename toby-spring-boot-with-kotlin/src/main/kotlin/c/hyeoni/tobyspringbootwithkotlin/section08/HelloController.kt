@@ -1,6 +1,5 @@
-package c.hyeoni.tobyspringbootwithkotlin.section07
+package c.hyeoni.tobyspringbootwithkotlin.section08
 
-import c.hyeoni.tobyspringbootwithkotlin.section08.HelloService
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
 

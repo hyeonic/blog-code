@@ -1,6 +1,5 @@
-package c.hyeoni.tobyspringbootwithkotlin.section07config
+package c.hyeoni.tobyspringbootwithkotlin.section08config
 
-import c.hyeoni.tobyspringbootwithkotlin.section08config.EnableMyAutoConfiguration
 import org.springframework.context.annotation.ComponentScan
 import org.springframework.context.annotation.Configuration
 

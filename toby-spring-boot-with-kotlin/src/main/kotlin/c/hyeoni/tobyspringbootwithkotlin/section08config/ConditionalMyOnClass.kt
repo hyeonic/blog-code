@@ -1,6 +1,5 @@
-package c.hyeoni.tobyspringbootwithkotlin.section07config
+package c.hyeoni.tobyspringbootwithkotlin.section08config
 
-import c.hyeoni.tobyspringbootwithkotlin.section08config.MyOnClassCondition
 import org.springframework.context.annotation.Conditional
 
 @Retention(AnnotationRetention.RUNTIME)

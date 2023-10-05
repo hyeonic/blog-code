@@ -1,6 +1,5 @@
-package c.hyeoni.tobyspringbootwithkotlin.section07config
+package c.hyeoni.tobyspringbootwithkotlin.section08config
 
-import c.hyeoni.tobyspringbootwithkotlin.section08config.MyAutoConfiguration
 import org.springframework.boot.context.annotation.ImportCandidates
 import org.springframework.context.annotation.DeferredImportSelector
 import org.springframework.core.type.AnnotationMetadata

@@ -1,4 +1,4 @@
-package c.hyeoni.tobyspringbootwithkotlin.section07config.autoconfig
+package c.hyeoni.tobyspringbootwithkotlin.section08config.autoconfig
 
 import c.hyeoni.tobyspringbootwithkotlin.section06config.MyAutoConfiguration
 import c.hyeoni.tobyspringbootwithkotlin.section08config.ConditionalMyOnClass

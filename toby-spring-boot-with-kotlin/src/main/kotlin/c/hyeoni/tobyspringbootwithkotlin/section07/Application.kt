@@ -1,6 +1,7 @@
 package c.hyeoni.tobyspringbootwithkotlin.section07
 
-import c.hyeoni.tobyspringbootwithkotlin.section07config.MySpringBootApplication
+import c.hyeoni.tobyspringbootwithkotlin.section08.Application
+import c.hyeoni.tobyspringbootwithkotlin.section08config.MySpringBootApplication
 
 @MySpringBootApplication
 class Application
