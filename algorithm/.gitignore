@@ -35,3 +35,8 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### CUSTOM
+src/main/java/io/github/hyeonic/algorithm/codility
+src/main/java/io/github/hyeonic/algorithm/external
+src/main/java/io/github/hyeonic/algorithm/programmers
