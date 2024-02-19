@@ -6,6 +6,6 @@ import jakarta.persistence.Id
 @Entity
 class Member(
     @Id
-    var id: Long = 0L,
+    var id: Long? = null,
     var name: String
 )

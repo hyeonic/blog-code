@@ -20,7 +20,7 @@ class MemberRepositoryIntegrationTest {
 
     @Test
     fun saveTest() {
-        val member = Member(0L, "hyeonic")
+        val member = Member(name = "hyeonic")
 
         assertThatCode { memberRepository.save(member) }.doesNotThrowAnyException()
     }
