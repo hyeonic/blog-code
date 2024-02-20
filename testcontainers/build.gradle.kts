@@ -25,12 +25,13 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
 
+    implementation("org.springframework.boot:spring-boot-testcontainers")
+    implementation("org.testcontainers:mysql")
+
     runtimeOnly("com.mysql:mysql-connector-j")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testImplementation("org.springframework.boot:spring-boot-testcontainers")
     testImplementation("org.testcontainers:junit-jupiter")
-    testImplementation("org.testcontainers:mysql")
 }
 
 tasks.withType<KotlinCompile> {
