@@ -236,7 +236,7 @@ class MemberRepositoryIntegrationTest {
 `ryuk`의 주요 역할은 테스트가 완료된 후에 사용된 모든 리소스를 자동으로 정리한다. `ryuk`는 `testcontainers`가 시작될 때 함께 실행되며(예시에서는 테스트가 수행될
 때), `testcontainers`와 함께 생성된 모든 것들을 관리한다. 테스트 종료되면, `ryuk`는 해당 정보를 바탕으로 생성된 모든 리소스를 안전하게 정리하고 삭제한다.
 
-테스트가 완료된 후 도커 데스크탑을 확인해보면 아래와 같이 깔끔하게 정리된 것을 확인할 수 있을 것이다. 물론 테스트도 성공한다!
+테스트가 완료된 후 도커 데스크탑을 확인해보면 깔끔하게 정리된 것을 확인할 수 있을 것이다. 물론 테스트도 성공한다!
 
 ![](images/6.png)
 
@@ -252,4 +252,4 @@ class MemberRepositoryIntegrationTest {
 ## References.
 
 * [멱등법칙](https://ko.wikipedia.org/wiki/%EB%A9%B1%EB%93%B1%EB%B2%95%EC%B9%99)
-* [improved-testcontainers-support-in-spring-boot-3-1](https://spring.io/blog/2023/06/23/improved-testcontainers-support-in-spring-boot-3-1)**
+* [improved-testcontainers-support-in-spring-boot-3-1](https://spring.io/blog/2023/06/23/improved-testcontainers-support-in-spring-boot-3-1)
