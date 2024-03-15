@@ -23,7 +23,6 @@ class ContainersConfig {
             .withPassword("test")
             .withReuse(true)
     }
-
 }
 
 fun main(args: Array<String>) {
