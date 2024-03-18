@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: kotlin-with-jpa
+  profiles:
+    active: local
