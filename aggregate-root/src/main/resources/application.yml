@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: aggregate-root
+  profiles:
+    active: local
