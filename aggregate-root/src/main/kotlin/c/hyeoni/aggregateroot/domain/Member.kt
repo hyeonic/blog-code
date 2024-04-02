@@ -17,5 +17,11 @@ class Member(
     var name: String,
 
     @Column(name = "deleted", nullable = false)
-    var deleted: Boolean
-) : AbstractAggregateRoot<Member>()
+    var deleted: Boolean = false,
+) : AbstractAggregateRoot<Member>() {
+
+    fun delete() {
+        this.deleted = true
+        this.id?.let { this.registerEvent(MemberSoftDeletedEvent(it)) }
+    }
+}
