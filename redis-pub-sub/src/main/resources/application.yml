@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: redis-pub-sub
+
+  profiles:
+    active: local
