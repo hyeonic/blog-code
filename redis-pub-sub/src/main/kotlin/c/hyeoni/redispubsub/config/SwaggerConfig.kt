@@ -16,7 +16,7 @@ class SwaggerConfig {
         return OpenAPI()
             .components(Components())
             .info(Info().title("Product Platform"))
-            .also { log.info { "swagger url - http://localhost:8080/swagger-ui/index.html" } }
+            .also { log.info { "swagger url -> http://localhost:8080/swagger-ui/index.html" } }
     }
 
     companion object {

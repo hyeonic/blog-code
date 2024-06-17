@@ -1,5 +1,6 @@
 package c.hyeoni.redispubsub.config
 
+import mu.KotlinLogging
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -14,10 +15,10 @@ class RedisConfig {
 
     @Bean
     fun redisConnectionFactory(
-        @Value("\${redis.host}") host: String,
-        @Value("\${redis.port}") port: Int
+        @Value("\${spring.data.redis.host}") host: String,
+        @Value("\${spring.data.redis.port}") port: Int
     ): RedisConnectionFactory {
-        return LettuceConnectionFactory(host, port)
+        return LettuceConnectionFactory(host, port).also { log.info { "redis access -> redis-cli -h $host -p $port" } }
     }
 
     @Bean
@@ -29,5 +30,9 @@ class RedisConfig {
                 this.keySerializer = StringRedisSerializer()
                 this.valueSerializer = StringRedisSerializer()
             }
+    }
+
+    companion object {
+        val log = KotlinLogging.logger { }
     }
 }

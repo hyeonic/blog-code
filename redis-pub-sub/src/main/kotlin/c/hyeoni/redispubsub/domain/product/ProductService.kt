@@ -18,6 +18,9 @@ class ProductService(
         return getById(id).apply {
             this.name = name
             this.description = description
+        }.also {
+            it.notifyChanged()
+            productRepository.save(it)
         }
     }
 
