@@ -16,6 +16,12 @@ class ProductController(
     private val productService: ProductService
 ) {
 
+    @GetMapping("/products")
+    fun findAll(): List<ProductDefaultResponse> {
+        return productService.findAll()
+            .map { it.toDefaultResponse() }
+    }
+
     @GetMapping("/products/{id}")
     fun getById(@PathVariable id: Long): ProductDefaultResponse {
         return productService.getById(id)

@@ -29,4 +29,9 @@ class ProductService(
         return productRepository.findById(id)
             .orElseThrow()
     }
+
+    @Transactional(readOnly = true)
+    fun findAll(): List<Product> {
+        return productRepository.findAll()
+    }
 }
