@@ -41,7 +41,8 @@ function renderTodos() {
         span.textContent = todo.text;
 
         const deleteButton = document.createElement('button');
-        deleteButton.textContent = 'Delete';
+        deleteButton.classList.add('delete-button');
+        deleteButton.textContent = '삭제';
         deleteButton.addEventListener('click', () => deleteTodo(todo.id));
 
         todoItem.appendChild(checkbox);
