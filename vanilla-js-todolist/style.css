@@ -51,20 +51,13 @@ h1 {
     align-items: center;
     justify-content: space-between;
     padding: 10px 0px 10px 10px;
+    color: #333D51;
     border-bottom: 1px solid #ccc;
 }
 
 #todolist li.completed {
     text-decoration: line-through;
     color: #ccc;
-}
-
-.todo-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    color: #333D51;
-    border-bottom: 1px solid #ccc;
 }
 
 .delete-button {
@@ -75,11 +68,6 @@ h1 {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-}
-
-.todo-item.completed {
-    text-decoration: line-through;
-    color: #ccc;
 }
 
 .todo-checkbox {

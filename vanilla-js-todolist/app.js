@@ -2,23 +2,19 @@ const todoInput = document.getElementById('todo-input');
 const todoAddButton = document.getElementById('todo-add-button');
 const todolist = document.getElementById('todolist');
 
-let todos = [
-    {
-        id: Date.now(),
-        text: "todolist 만들기",
-        completed: false
-    }
-];
+let initId = Date.now();
+let todos = new Map();
 
 function addTodo() {
     const todoText = todoInput.value.trim();
     if (todoText !== '') {
+        let id = Date.now();
         const newTodo = {
-            id: Date.now(),
+            id: id,
             text: todoText,
             completed: false
         };
-        todos.push(newTodo);
+        todos.set(id, newTodo);
         renderTodos();
         todoInput.value = '';
     }
@@ -53,22 +49,21 @@ function renderTodos() {
 }
 
 function toggleTodoCompletion(id) {
-    todos = todos.map(todo => {
-        if (todo.id === id) {
-            return {
-                id: todo.id,
-                text: todo.text,
-                completed: !todo.completed
-            };
-        }
-        return todo;
-    });
-
+    let targetTodo = todos.get(id);
+    todos.set(id, toggle(targetTodo))
     renderTodos();
 }
 
+function toggle(todo) {
+    return {
+        id: todo.id,
+        text: todo.text,
+        completed: !todo.completed
+    }
+}
+
 function deleteTodo(id) {
-    todos = todos.filter(todo => todo.id !== id);
+    todos.delete(id);
     renderTodos();
 }
 
